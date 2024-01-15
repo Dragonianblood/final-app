@@ -2,6 +2,7 @@ import ttkbootstrap as tb
 from K import *
 from views.helper import View
 import requests as req
+from json import dumps
 
 
 class DeliveryPage(View):
@@ -50,12 +51,19 @@ class DeliveryPage(View):
                                                                                                 ipadx=80, pady=10)
 
     def order_burger(self):
-        req.post(f'{self.app.url}items?auth={self.app.token["access_token"]}',
-                 headers={'Authorization': f'Bearer {self.app.token["access_token"]}',
-                          'Content-Type': 'application/json'},
-                 data={"address": self.address.get(), "amount_pad": 7, "nice_rating": 5, "order": 'burger'})
+        if len(self.address.get()) > 0:
+            req.post(f'{self.app.url}items',
+                     headers={'Content-Type': 'application/json','Authorization': f'Bearer {self.app.token["access_token"]}'},
+                     data=dumps({"address": self.address.get(),"amount_paid": 7,"nice_rating": 1,"order": "Burger"}))
+            self.create_toast("Successfully Ordered", "Paid 7$ for a Burger")
+        else:
+            self.create_toast("401 Error", "Invalid Address")
     def order_coffee(self):
-        req.post(f'{self.app.url}items?auth={self.app.token["access_token"]}',
-                 headers={'Authorization': f'Bearer {self.app.token["access_token"]}',
-                          'Content-Type': 'application/json'},
-                 data={"address": self.address.get(), "amount_pad": 4, "nice_rating": 5, "order": 'coffee'})
+        if len(self.address.get()) > 5:
+            req.post(f'{self.app.url}items',
+                     headers={'Content-Type': 'application/json','Authorization': f'Bearer {self.app.token["access_token"]}'},
+                     data=dumps({"address": self.address.get(),"amount_paid": 4,"nice_rating": 1,"order": "Coffee"}))
+
+            self.create_toast("Successfully Ordered", "Paid 4$ for a Coffee")
+        else:
+            self.create_toast("401 Error", "Invalid Address")

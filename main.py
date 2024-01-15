@@ -1,6 +1,6 @@
 import ttkbootstrap as tb
 from K import *
-from views import main_page, tasks, login_page, register_page, user_page, profile_page,delivery_page, user_orders
+from views import main_page, login_page, register_page, user_page, profile_page,delivery_page, user_orders
 
 
 class TaskApp(tb.Window):
@@ -15,7 +15,7 @@ class TaskApp(tb.Window):
         self.nick = tb.StringVar()
         self.name = tb.StringVar()
         self.token: dict = {}
-        self.url = 'http://10.6.20.156:8000/'
+        self.url = 'http://10.6.20.236:8000/'
 
         # Views variables
         self.current_view = None
@@ -28,13 +28,11 @@ class TaskApp(tb.Window):
             "profile_page": profile_page.ProfilePage(self),
             "delivery_page": delivery_page.DeliveryPage(self),
             "user_orders": user_orders.OrdersPage(self),
-            "view_tasks": tasks.TasksView(self),
-            "view_task": tasks.TaskView(self),
-            "create_task": tasks.CreateTaskView(self)
+
         }
 
         # Init Welcome Screen
-        self.profile_page()
+        self.main_page()
 
 
 

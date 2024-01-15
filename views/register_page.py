@@ -57,11 +57,10 @@ class RegisterPage(View):
     def register(self):
         if self.password_var1.get() == self.password_var2.get():
             auth = req.post(f"{self.app.url}users", data=dumps({"alt_name": self.nick_var.get(),
-                                                                "id": 3,
-                                                              "email": self.email_var.get(),
-                                                              "name": self.name_var.get(),
-                                                              "password": self.password_var1.get(),
-                                                              "role": "Admin"})).json()
+                                                                      "email": self.email_var.get(),
+                                                                      "name": self.name_var.get(),
+                                                                      "password": self.password_var1.get(),
+                                                                      "role": "Admin"})).json()
             if auth is None:
                 self.create_toast("Account Created", "Welcome to Food Online")
                 auth = req.post(f"{self.app.url}token", data={"username": self.email_var.get(),

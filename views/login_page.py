@@ -25,7 +25,7 @@ class LoginPage(View):
         self.bottom3.pack(side=TOP, ipadx=114, ipady=2)
         tb.Label(self.top3, text="Welcome back", bootstyle="inverse-primary", font=('Helvetica', 30)).pack(side=TOP, pady=40)
         tb.Label(self.top3, text="Please log into your account", bootstyle="inverse-primary", font=('Helvetica', 15)).pack(side=TOP)
-        tb.Label(self.top3, text="Username", bootstyle="inverse-primary", font=('Helvetica', 15)).pack(side=BOTTOM)
+        tb.Label(self.top3, text="Email", bootstyle="inverse-primary", font=('Helvetica', 15)).pack(side=BOTTOM)
         self.search_bar = tb.Entry(self.bottom3, bootstyle=INFO, textvariable=self.email_var).pack(side=TOP,pady=10)
         self.bottom4 = tb.Frame(self.bottom2, bootstyle=PRIMARY)
         self.bottom4.pack(side=TOP, ipadx=56, ipady=0)

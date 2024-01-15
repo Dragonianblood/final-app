@@ -26,17 +26,3 @@ class MainPage(View):
         tb.Label(self.top3, text="food straight to your door", bootstyle="inverse-primary", font=('Helvetica', 15)).pack(side=TOP)
         tb.Button(self.bottom3, text="Register", command=self.app.register_page, bootstyle=SUCCESS).pack(side=BOTTOM, ipadx=30, ipady=5, pady=40)
         tb.Button(self.bottom3, text="Login", command=self.app.login_page, bootstyle=INFO).pack(side=BOTTOM, ipadx=39,ipady=5)
-
-    # def login(self):
-    #     # Your authentication would need to be implemented here
-    #     email = self.email_var.get()
-    #     password = self.password_var.get()
-    #
-    #     if email == "admin" and password == "password":
-    #         self.app.authenticated = TRUE
-    #         self.app.token = {"access_token": "string", "token_type": "bearer"}
-    #         self.app.email = email
-    #         self.password_var.set("")
-    #         self.app.show_tasks_view()
-    #     else:
-    #         self.create_toast("401 Error", "Bad Credentials")
